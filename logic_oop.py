@@ -21,6 +21,10 @@ class Shape:  # создаем класс фигур
         else:
             print("Ошибка в формате записи данных в файле.")
 
+    @abc.abstractmethod
+    def perimeter(self, shape):
+        pass
+
 
 class Parallelepiped(Shape):  # создаем класс параллелепипедов, дочерний классу фигур
     def __init_(self,):
@@ -36,7 +40,10 @@ class Parallelepiped(Shape):  # создаем класс параллелепи
                             "h = " + self.h + ", "
                             "w = " + self.w + ", "
                             "l = " + self.l + ", "
-                            "d = " + self.d + "\n")
+                            "d = " + self.d.strip())
+
+    def perimeter(self):
+        return int(self.w)*int(self.h)*int(self.l)*4
 
 
 class Sphere(Shape):  # Создаем класс шара, дочерный классу фигур
@@ -51,7 +58,10 @@ class Sphere(Shape):  # Создаем класс шара, дочерный к�
     def output_shape(self, output_stream):  # Тоже выводим значения полей
         output_stream.write(": It's sphere: "
                             "r = " + self.r + ", "
-                            "d = " + self.d + "\n")
+                            "d = " + self.d.strip())
+
+    def perimeter(self):
+        return 3.1415*2*int(self.r)
 
 
 class Container:
@@ -78,9 +88,9 @@ class Container:
 
         while len(self.shapes_list) != 0:  # если список не пуст, то берем последнюю фигуру из списка и выводим
             shape = self.shapes_list.pop()
-
             output_file.write(str(count))
             shape.output_shape(output_file)
+            output_file.write(" | perimeter: " + str(shape.perimeter()) + "\n")
             count += 1
 
         output_file.write("\nEmpty container\n"
