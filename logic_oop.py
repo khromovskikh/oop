@@ -25,6 +25,9 @@ class Shape:  # создаем класс фигур
     def perimeter(self, shape):
         pass
 
+    def compare(self, shape0, shape1):
+        return shape0.perimeter() < shape1.perimeter()
+
 
 class Parallelepiped(Shape):  # создаем класс параллелепипедов, дочерний классу фигур
     def __init_(self,):
@@ -95,3 +98,13 @@ class Container:
 
         output_file.write("\nEmpty container\n"
                           "Container contains " + str(len(self.shapes_list)))
+
+    def sort(self):
+        self.shapes_list.reverse()
+        n = len(self.shapes_list)
+
+        for i in range(n):
+            for j in range(0, n - i - 1):
+                s = Shape()
+                if s.compare(self.shapes_list[j], self.shapes_list[j + 1]):
+                    self.shapes_list[j], self.shapes_list[j + 1] = self.shapes_list[j + 1], self.shapes_list[j]

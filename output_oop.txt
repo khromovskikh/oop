@@ -1,10 +1,10 @@
 Container's length = 6
-0: It's parallelepiped: h = 12, w = 12, l = 12, d = 111111111111111111111111 | perimeter: 6912
-1: It's parallelepiped: h = 0, w = 234, l = 32, d = 1234 | perimeter: 0
+0: It's sphere: r = 22, d = 2245 | perimeter: 138.226
+1: It's parallelepiped: h = 8, w = 3, l = 11, d = 7456 | perimeter: 1056
 2: It's parallelepiped: h = 13, w = 24, l = 2, d = 118 | perimeter: 2496
-3: It's sphere: r = 22, d = 2245 | perimeter: 138.226
-4: It's sphere: r = 965565, d = 578687 | perimeter: 6066644.8950000005
-5: It's parallelepiped: h = 8, w = 3, l = 11, d = 7456 | perimeter: 1056
+3: It's parallelepiped: h = 12, w = 12, l = 12, d = 111111111111111111111111 | perimeter: 6912
+4: It's parallelepiped: h = 1, w = 234, l = 32, d = 1234 | perimeter: 29952
+5: It's sphere: r = 965565, d = 578687 | perimeter: 6066644.8950000005
 
 Empty container
 Container contains 0
