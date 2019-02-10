@@ -1,15 +1,17 @@
-Container's length = 6
+Container's length = 7
 0: It's parallelepiped: h = 12, w = 12, l = 12, d = 111111111111111111111111
 
 1: It's parallelepiped: h = 0, w = 234, l = 32, d = 1234
 
 2: It's parallelepiped: h = 13, w = 24, l = 2, d = 118
 
-3: It's sphere: r = 22, d = 2245
+3: It's tetrahedron: a = 14, d = 1000
 
-4: It's sphere: r = 965565, d = 578687
+4: It's sphere: r = 22, d = 2245
 
-5: It's parallelepiped: h = 8, w = 3, l = 11, d = 7456
+5: It's sphere: r = 965565, d = 578687
+
+6: It's parallelepiped: h = 8, w = 3, l = 11, d = 7456
 
 
 Empty container

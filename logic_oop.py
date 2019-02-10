@@ -18,6 +18,9 @@ class Shape:  # создаем класс фигур
         elif int(shape_type) == 2:  # если 2, то шар
             sphere = Sphere()
             sphere.input_shape(shape_params, shapes_list)
+        elif int(shape_type) == 3:  # если 3, то тетраэдер
+            tetrahedron = Tetrahedron()
+            tetrahedron.input_shape(shape_params, shapes_list)
         else:
             print("Ошибка в формате записи данных в файле.")
 
@@ -51,6 +54,21 @@ class Sphere(Shape):  # Создаем класс шара, дочерный к�
     def output_shape(self, output_stream):  # Тоже выводим значения полей
         output_stream.write(": It's sphere: "
                             "r = " + self.r + ", "
+                            "d = " + self.d + "\n")
+
+
+class Tetrahedron(Shape):
+    def __init_(self):
+        Shape.__init__(self)  # тоже говорим, что есть значение плотности
+
+    def input_shape(self, line, shapes_list):  # Тоже присваиваем значения полям класса
+        self.a, self.d = line  # получаем значения переменных из следующей строки
+        self.d.strip()
+        shapes_list.append(self)
+
+    def output_shape(self, output_stream):  # Тоже выводим значения полей
+        output_stream.write(": It's tetrahedron: "
+                            "a = " + self.a + ", "
                             "d = " + self.d + "\n")
 
 
