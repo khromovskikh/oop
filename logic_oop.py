@@ -21,6 +21,9 @@ class Shape:  # создаем класс фигур
         else:
             print("Ошибка в формате записи данных в файле.")
 
+    def output_sphere(self, output_stream):
+        output_stream.write("\n")
+
 
 class Parallelepiped(Shape):  # создаем класс параллелепипедов, дочерний классу фигур
     def __init_(self,):
@@ -53,6 +56,9 @@ class Sphere(Shape):  # Создаем класс шара, дочерный к�
                             "r = " + self.r + ", "
                             "d = " + self.d + "\n")
 
+    def output_sphere(self, output_stream):
+        self.output_shape(output_stream)
+
 
 class Container:
     def __init__(self):
@@ -78,9 +84,8 @@ class Container:
 
         while len(self.shapes_list) != 0:  # если список не пуст, то берем последнюю фигуру из списка и выводим
             shape = self.shapes_list.pop()
-
             output_file.write(str(count))
-            shape.output_shape(output_file)
+            shape.output_sphere(output_file)
             count += 1
 
         output_file.write("\nEmpty container\n"
