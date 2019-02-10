@@ -1,15 +1,15 @@
 Container's length = 6
-0: It's parallelepiped: h = 12, w = 12, l = 12, d = 111111111111111111111111
+0: It's parallelepiped: h = 12, w = 12, l = 12, d = 111, t = 100
 
-1: It's parallelepiped: h = 0, w = 234, l = 32, d = 1234
+1: It's parallelepiped: h = 0, w = 234, l = 32, d = 1234, t = 100
 
-2: It's parallelepiped: h = 13, w = 24, l = 2, d = 118
+2: It's parallelepiped: h = 13, w = 24, l = 2, d = 118, t = 100
 
-3: It's sphere: r = 22, d = 2245
+3: It's sphere: r = 22, d = 2245, t = 11
 
-4: It's sphere: r = 965565, d = 578687
+4: It's sphere: r = 965565, d = 578687, t = 23
 
-5: It's parallelepiped: h = 8, w = 3, l = 11, d = 7456
+5: It's parallelepiped: h = 8, w = 3, l = 11, d = 7456, t = 100
 
 
 Empty container
