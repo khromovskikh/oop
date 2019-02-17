@@ -79,6 +79,7 @@ class Sphere(Shape):  # Создаем класс шара, дочерный к�
 
     def output_sphere(self, output_stream):
         self.output_shape(output_stream)
+        output_stream.write(" | square: " + str(self.square()) + "\n")
 
 
 class Tetrahedron(Shape):
