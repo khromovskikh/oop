@@ -8,6 +8,7 @@ class Shape:  # создаем класс фигур
 
     def __init_(self):
         self.density = 0  # у всех фигур будет плотность
+        self.temperature = 0
 
     @abc.abstractmethod  # штука, чтобы показать, что метод будет абстрактным (декоратор)
     def output_shape(self, output_stream):
@@ -39,8 +40,8 @@ class Parallelepiped(Shape):  # создаем класс параллелепи
         super().__init__(self)  # Вызываем конструктор базового класса, чтобы получить значение плотности
 
     def input_shape(self, line, shapes_list):  # Присваиваем значения полям класса
-        self.h, self.w, self.l, self.d = line  # получаем значения переменных из следующей строки
-        self.d.strip()
+        self.h, self.w, self.l, self.d, self.t = line  # получаем значения переменных из следующей строки
+        self.t.strip()
         shapes_list.append(self)
 
     def output_shape(self, output_stream):  # Вывод значений полей
@@ -48,7 +49,8 @@ class Parallelepiped(Shape):  # создаем класс параллелепи
                             "h = " + self.h + ", "
                             "w = " + self.w + ", "
                             "l = " + self.l + ", "
-                            "d = " + self.d.strip())
+                            "d = " + self.d.strip() + ", "
+                            "t = " + self.t.strip())
 
     def square(self):
         return (int(self.w)*int(self.l) + int(self.l)*int(self.h) + int(self.w)*int(self.h))*2
@@ -59,14 +61,15 @@ class Sphere(Shape):  # Создаем класс шара, дочерный к�
         Shape.__init__(self)  # тоже говорим, что есть значение плотности
 
     def input_shape(self, line, shapes_list):  # Тоже присваиваем значения полям класса
-        self.r, self.d = line  # получаем значения переменных из следующей строки
-        self.d.strip()
+        self.r, self.d, self.t = line  # получаем значения переменных из следующей строки
+        self.t.strip()
         shapes_list.append(self)
 
     def output_shape(self, output_stream):  # Тоже выводим значения полей
         output_stream.write(": It's sphere: "
                             "r = " + self.r + ", "
-                            "d = " + self.d.strip())
+                            "d = " + self.d.strip() + ", "
+                            "t = " + self.t.strip())
 
     def square(self):
         return 3.1415*4*int(self.r)*int(self.r)
@@ -77,14 +80,15 @@ class Tetrahedron(Shape):
         Shape.__init__(self)  # тоже говорим, что есть значение плотности
 
     def input_shape(self, line, shapes_list):  # Тоже присваиваем значения полям класса
-        self.a, self.d = line  # получаем значения переменных из следующей строки
+        self.a, self.d, self.t = line  # получаем значения переменных из следующей строки
         self.d.strip()
         shapes_list.append(self)
 
     def output_shape(self, output_stream):  # Тоже выводим значения полей
         output_stream.write(": It's tetrahedron: "
                             "a = " + self.a + ", "
-                            "d = " + self.d.strip())
+                            "d = " + self.d.strip() + ", "
+                            "t = " + self.t.strip())
 
     def square(self):
         return math.sqrt(3)*int(self.a)
