@@ -1,5 +1,7 @@
 import abc  # библиотека для реализации абстрактных классов
 
+import math
+
 
 class Shape:  # создаем класс фигур
     shapes_list = []
@@ -25,11 +27,11 @@ class Shape:  # создаем класс фигур
             print("Ошибка в формате записи данных в файле.")
 
     @abc.abstractmethod
-    def perimeter(self, shape):
+    def square(self, shape):
         pass
 
     def compare(self, shape0, shape1):
-        return shape0.perimeter() < shape1.perimeter()
+        return shape0.square() < shape1.square()
 
 
 class Parallelepiped(Shape):  # создаем класс параллелепипедов, дочерний классу фигур
@@ -48,8 +50,8 @@ class Parallelepiped(Shape):  # создаем класс параллелепи
                             "l = " + self.l + ", "
                             "d = " + self.d.strip())
 
-    def perimeter(self):
-        return int(self.w)*int(self.h)*int(self.l)*4
+    def square(self):
+        return (int(self.w)*int(self.l) + int(self.l)*int(self.h) + int(self.w)*int(self.h))*2
 
 
 class Sphere(Shape):  # Создаем класс шара, дочерный классу фигур
@@ -66,8 +68,8 @@ class Sphere(Shape):  # Создаем класс шара, дочерный к�
                             "r = " + self.r + ", "
                             "d = " + self.d.strip())
 
-    def perimeter(self):
-        return 3.1415*2*int(self.r)
+    def square(self):
+        return 3.1415*4*int(self.r)*int(self.r)
 
 
 class Tetrahedron(Shape):
@@ -82,7 +84,10 @@ class Tetrahedron(Shape):
     def output_shape(self, output_stream):  # Тоже выводим значения полей
         output_stream.write(": It's tetrahedron: "
                             "a = " + self.a + ", "
-                            "d = " + self.d + "\n")
+                            "d = " + self.d.strip())
+
+    def square(self):
+        return math.sqrt(3)*int(self.a)
 
 
 class Container:
@@ -111,7 +116,7 @@ class Container:
             shape = self.shapes_list.pop()
             output_file.write(str(count))
             shape.output_shape(output_file)
-            output_file.write(" | perimeter: " + str(shape.perimeter()) + "\n")
+            output_file.write(" | square: " + str(shape.square()) + "\n")
             count += 1
 
         output_file.write("\nEmpty container\n"
