@@ -12,6 +12,7 @@ class Main:
 
         c = Container()
         c.input_shapes(input_name)
+        c.sort()
         c.output(output_name)
 
 
