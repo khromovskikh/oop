@@ -11,9 +11,16 @@ class Main:
         output_name = sys.argv[2]
 
         c = Container()
+        c.clear_file()
+        c.input_shapes(input_name)
+        c.output(output_name)
         c.input_shapes(input_name)
         c.sort()
         c.output(output_name)
+        c.input_shapes(input_name)
+        c.sort()
+        c.output(output_name, True)
+        
 
 
 if __name__ == '__main__':

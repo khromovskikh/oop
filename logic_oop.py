@@ -44,6 +44,23 @@ class Parallelepiped(Shape):  # создаем класс параллелепи
 
     def input_shape(self, line, shapes_list):  # Присваиваем значения полям класса
         self.h, self.w, self.l, self.d, self.t = line  # получаем значения переменных из следующей строки
+        if self.h.isdigit or (int(self.h) <= 0):
+
+            print("Введены неверные параметры параллелепипеда.")
+            quit()
+
+        if self.w.isdigit or (int(self.w) <= 0):
+            print("Введены неверные параметры параллелепипеда.")
+            quit()
+
+        if self.d.isdigit or (int(self.d) <= 0):
+            print("Введены неверные параметры параллелепипеда.")
+            quit()
+
+        if self.t.isdigit or (int(self.t) <= 0):
+            print("Введены неверные параметры параллелепипеда.")
+            quit()
+
         self.t.strip()
         shapes_list.append(self)
 
@@ -65,6 +82,19 @@ class Sphere(Shape):  # Создаем класс шара, дочерный к�
 
     def input_shape(self, line, shapes_list):  # Тоже присваиваем значения полям класса
         self.r, self.d, self.t = line  # получаем значения переменных из следующей строки
+
+        if self.r.isdigit or (int(self.r) <= 0):
+            print("Введены неверные параметры сферы.")
+            quit()
+
+        if self.d.isdigit or (int(self.d) <= 0):
+            print("Введены неверные параметры сферы.")
+            quit()
+
+        if self.t.isdigit or (int(self.t) <= 0):
+            print("Введены неверные параметры сферы.")
+            quit()
+
         self.t.strip()
         shapes_list.append(self)
 
@@ -88,6 +118,19 @@ class Tetrahedron(Shape):
 
     def input_shape(self, line, shapes_list):  # Тоже присваиваем значения полям класса
         self.a, self.d, self.t = line  # получаем значения переменных из следующей строки
+
+        if self.a.isdigit or (int(self.a) <= 0):
+            print("Введены неверные параметры тетраэдра.")
+            quit()
+
+        if self.d.isdigit or (int(self.d) <= 0):
+            print("Введены неверные параметры тетраэдра.")
+            quit()
+
+        if self.t.isdigit or (int(self.t) <= 0):
+            print("Введены неверные параметры тетраэдра.")
+            quit()
+
         self.d.strip()
         shapes_list.append(self)
 
@@ -116,9 +159,9 @@ class Container:
         for line in file:
             shape.input_shape(self.shapes_list, line, file.readline().split(" "))
 
-    def output(self, file_name):
+    def output(self, file_name, filter=False):
         count = 0  # счетччик для номера фигуры
-        output_file = open(file_name, 'w')  # Открываем файл на запись
+        output_file = open(file_name, 'a')  # Открываем файл на запись
 
         # выводим количество фигур в контейнере
         output_file.write("Container's length = " + str(len(self.shapes_list)) + "\n")
@@ -126,13 +169,15 @@ class Container:
         while len(self.shapes_list) != 0:  # если список не пуст, то берем последнюю фигуру из списка и выводим
             shape = self.shapes_list.pop()
             output_file.write(str(count))
-            # shape.output_shape(output_file)
-            # output_file.write(" | square: " + str(shape.square()) + "\n")
-            shape.output_sphere(output_file)
+            if filter:
+                shape.output_sphere(output_file)
+            else:
+                shape.output_shape(output_file)
+                output_file.write(" | square: " + str(shape.square()) + "\n")
             count += 1
 
         output_file.write("\nEmpty container\n"
-                          "Container contains " + str(len(self.shapes_list)))
+                          "Container contains " + str(len(self.shapes_list)) + "\n\n")
 
     def sort(self):
         self.shapes_list.reverse()
@@ -143,3 +188,8 @@ class Container:
                 s = Shape()
                 if s.compare(self.shapes_list[j], self.shapes_list[j + 1]):
                     self.shapes_list[j], self.shapes_list[j + 1] = self.shapes_list[j + 1], self.shapes_list[j]
+
+    def clear_file(self):
+        output_file = open("output_oop.txt", 'w')
+        output_file.seek(0)
+        output_file.truncate()
