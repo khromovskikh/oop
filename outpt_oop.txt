@@ -22,3 +22,18 @@ Container's length = 3
 Empty container
 Container contains 0
 
+Container's length = 0
+
+Empty container
+Container contains 0
+
+Container's length = 0
+
+Empty container
+Container contains 0
+
+Container's length = 0
+
+Empty container
+Container contains 0
+
